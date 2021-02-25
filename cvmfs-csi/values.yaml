@@ -1,0 +1,22 @@
+namespace: openshift-cern-cvmfs
+
+source:
+  # Until https://github.com/cernops/cvmfs-csi/pull/22 will be merged
+  # we need to use a personal repo
+  # repoURL: https://github.com/cernops/cvmfs-csi.git
+  # targetRevision: 'e96e011'
+  repoURL: https://github.com/isantospardo/cvmfs-csi.git
+  targetRevision: 'ce4f5ce'
+  path: deployments/helm/cvmfs-csi/
+
+repositories:
+  # The key will be used for the storage class name
+  # The value will be used for the repository
+  cvmfs-alice: alice.cern.ch
+  cvmfs-atlas: atlas.cern.ch
+  cvmfs-clicdp: clicdp.cern.ch
+  cvmfs-cms-bril: cms-bril.cern.ch
+  cvmfs-cms: cms.cern.ch
+  cvmfs-lhcb: lhcb.cern.ch
+  cvmfs-lhcbdev: lhcbdev.cern.ch
+  cvmfs-sft: sft.cern.ch

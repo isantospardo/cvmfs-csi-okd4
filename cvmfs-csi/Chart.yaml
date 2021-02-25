@@ -1,0 +1,17 @@
+apiVersion: v2
+name: cvmfs-csi
+description: Deploys CVMFS CSI as an Argo CD Application in CERN OpenShift4 clusters.
+version: 0.1.0
+appVersion: v0.1.0
+home: https://github.com/cernops/cvmfs-csi
+icon: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/OpenShift-LogoType.svg/1200px-OpenShift-LogoType.svg.png
+keywords:
+- openshift
+- okd4
+- cvmfs
+- csi-driver
+sources:
+- https://github.com/cernops/cvmfs-csi
+maintainers:
+- name: CERN IT-CDA-WF
+  email: openshift-admins@cern.ch

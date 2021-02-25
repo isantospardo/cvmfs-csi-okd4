@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cvmfs-csi
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: {{ .Values.namespace | quote }}
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: {{ .Values.source.path }}
+    repoURL: {{ .Values.source.repoURL }}
+    targetRevision: {{ .Values.source.targetRevision | quote }}
+    helm:
+      values: |
+        ##
+        ## Default values for openshift-cern-cvmfs.
+        ## This is a YAML-formatted file.
+        ## Declare variables to be passed into your templates.
+        ##
+
+        # A storage class will be created for each repository
+        repositories:
+          # workaround for https://github.com/cernops/cvmfs-csi/issues/23
+          cern-repo: null
+{{ toYaml .Values.repositories | indent 10 }}
+
+        ##
+        ## End of additional openshift-cern-cvmfs resource settings.
+        ##
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
